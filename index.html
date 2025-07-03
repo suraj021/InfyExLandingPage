@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Decision Making</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+        }
+
+        .floating-money {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            color: #00ff88;
+        }
+
+        .floating-money:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-money:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-money:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-money:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 3s; }
+        .floating-money:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; }
+        .floating-money:nth-child(6) { top: 60%; right: 5%; animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .main-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ff88, #00d4ff, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .mystery-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 3rem 0;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: rgba(0, 255, 136, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            min-width: 100px;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .email-signup {
+            margin-top: 3rem;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .email-input {
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            min-width: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .notify-btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            color: #0f0f23;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .notify-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        .feature-desc {
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .glitch {
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+            opacity: 0;
+        }
+        
+        .social {
+          margin-top: 30px;
+        }
+        
+        .social a {
+          color: #ffffff;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .countdown { flex-direction: column; align-items: center; }
+            .email-signup { flex-direction: column; align-items: center; }
+            .email-input { min-width: 250px; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="floating-money">💰</div>
+    <div class="floating-money">💸</div>
+    <div class="floating-money">🤑</div>
+    <div class="floating-money">💵</div>
+    <div class="floating-money">💳</div>
+    <div class="floating-money">🏦</div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="logo">InfyEx</div>
+            
+            <div class="tagline">
+                The Future of Predicitve Analysis is Coming
+            </div>
+            
+            <div class="mystery-text">
+                Something revolutionary is brewing. A new way to harness collective wisdom, 
+                where knowledge meets opportunity and the future belongs to those who can see it coming.
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">🔮</span>
+                    <div class="feature-title">Foresight</div>
+                    <div class="feature-desc">Unlock the power of collective intelligence</div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <div class="feature-title">Lightning Fast</div>
+                    <div class="feature-desc">Real-time insights at the speed of thought</div>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🏆</span>
+                    <div class="feature-title">Rewarding</div>
+                    <div class="feature-desc">Your wisdom has value. Discover yours.</div>
+                </div>
+            </div>
+            <div class="social">
+              <p>To contribute, connect with me on <a href="https://www.linkedin.com/in/suraj021/" target="_blank">LinkedIn</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mysterious countdown that doesn't reveal the actual date
+        function updateCountdown() {
+            const countdownElements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes')
+            };
+            
+            // Generate mysterious, changing numbers
+            const randomDay = Math.floor(Math.random() * 30) + 1;
+            const randomHour = Math.floor(Math.random() * 24);
+            const randomMinute = Math.floor(Math.random() * 60);
+            
+            countdownElements.days.textContent = randomDay.toString().padStart(2, '0');
+            countdownElements.hours.textContent = randomHour.toString().padStart(2, '0');
+            countdownElements.minutes.textContent = randomMinute.toString().padStart(2, '0');
+        }
+        
+        // Update countdown every few seconds to create suspense
+        setInterval(updateCountdown, 3000);
+        updateCountdown();
+        
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            document.getElementById('particles').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 3000);
+        }
+        
+        setInterval(createParticle, 300);
+        
+        // Add glitch effect occasionally
+        setInterval(() => {
+            const logo = document.querySelector('.logo');
+            logo.classList.add('glitch');
+            setTimeout(() => {
+                logo.classList.remove('glitch');
+            }, 300);
+        }, 10000);
+        
+        // Email signup functionality
+        document.querySelector('.notify-btn').addEventListener('click', function() {
+            const email = document.querySelector('.email-input').value;
+            if (email) {
+                this.textContent = 'You\'re In!';
+                this.style.background = 'linear-gradient(45deg, #ff6b6b, #ffd93d)';
+                setTimeout(() => {
+                    this.textContent = 'Get Notified';
+                    this.style.background = 'linear-gradient(45deg, #00ff88, #00d4ff)';
+                }, 2000);
+            }
+        });
+        
+        // Hover effects for floating money
+        document.querySelectorAll('.floating-money').forEach(money => {
+            money.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.5) rotate(15deg)';
+                this.style.opacity = '0.3';
+            });
+            
+            money.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+                this.style.opacity = '0.1';
+            });
+        });
+    </script>
+</body>
+</html>
